@@ -6,11 +6,11 @@ class SubscriptionManager:
         self.subscriptions = self.load_subscriptions()
     
     def load_subscriptions(self):
-        with open(self.subscriptions_file, 'r') as f:
+        with open(self.subscriptions_file, 'r',encoding="utf-8") as f:
             return json.load(f)
     
     def save_subscriptions(self):
-        with open(self.subscriptions_file, 'w') as f:
+        with open(self.subscriptions_file, 'w',encoding="utf-8") as f:
             json.dump(self.subscriptions, f, indent=4)
     
     def list_subscriptions(self):

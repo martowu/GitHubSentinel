@@ -16,7 +16,7 @@ class LLM:
         if dry_run:
             # 如果启用了dry_run模式，将不会调用模型，而是将提示信息保存到文件中
             LOG.info("Dry run mode enabled. Saving prompt to file.")
-            with open("daily_progress/prompt.txt", "w+") as f:
+            with open("daily_progress/prompt.txt", "w+",encoding="utf-8") as f:
                 f.write(prompt)
             LOG.debug("Prompt saved to daily_progress/prompt.txt")
             return "DRY RUN"

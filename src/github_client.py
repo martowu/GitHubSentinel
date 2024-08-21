@@ -61,7 +61,7 @@ class GitHubClient:
         os.makedirs(repo_dir, exist_ok=True)  # 确保目录存在
         
         file_path = os.path.join(repo_dir, f'{today}.md')  # 构建文件路径
-        with open(file_path, 'w') as file:
+        with open(file_path, 'w',encoding="utf-8") as file:
             file.write(f"# Daily Progress for {repo} ({today})\n\n")
             file.write("\n## Issues Closed Today\n")
             for issue in updates['issues']:  # 写入今天关闭的问题
@@ -86,7 +86,7 @@ class GitHubClient:
         date_str = f"{since}_to_{today}"
         file_path = os.path.join(repo_dir, f'{date_str}.md')  # 构建文件路径
         
-        with open(file_path, 'w') as file:
+        with open(file_path, 'w',encoding="utf-8") as file:
             file.write(f"# Progress for {repo} ({since} to {today})\n\n")
             file.write(f"\n## Issues Closed in the Last {days} Days\n")
             for issue in updates['issues']:  # 写入在指定日期内关闭的问题

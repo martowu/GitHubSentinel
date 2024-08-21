@@ -15,7 +15,7 @@ class ReportGenerator:
         
         # 创建并写入日常进展的Markdown文件
         file_path = os.path.join(repo_dir, f'{date.today()}.md')
-        with open(file_path, 'w') as file:
+        with open(file_path, 'w',encoding="utf-8") as file:
             file.write(f"# Daily Progress for {repo} ({date.today()})\n\n")
             file.write("\n## Issues\n")
             for issue in updates['issues']:
@@ -36,7 +36,7 @@ class ReportGenerator:
         date_str = f"{since}_to_{today}"  # 格式化日期范围字符串
         file_path = os.path.join(repo_dir, f'{date_str}.md')
         
-        with open(file_path, 'w') as file:
+        with open(file_path, 'w',encoding="utf-8") as file:
             file.write(f"# Progress for {repo} ({since} to {today})\n\n")
             file.write("\n## Issues Closed in the Last {days} Days\n")
             for issue in updates['issues']:
@@ -50,13 +50,13 @@ class ReportGenerator:
 
     def generate_daily_report(self, markdown_file_path):
         # 读取Markdown文件并使用LLM生成日报
-        with open(markdown_file_path, 'r') as file:
+        with open(markdown_file_path, 'r',encoding="utf-8") as file:
             markdown_content = file.read()
 
         report = self.llm.generate_daily_report(markdown_content)  # 调用LLM生成报告
 
         report_file_path = os.path.splitext(markdown_file_path)[0] + "_report.md"
-        with open(report_file_path, 'w+') as report_file:
+        with open(report_file_path, 'w+',encoding="utf-8") as report_file:
             report_file.write(report)  # 写入生成的报告
 
 
@@ -67,13 +67,13 @@ class ReportGenerator:
 
     def generate_report_by_date_range(self, markdown_file_path, days):
         # 生成特定日期范围的报告，流程与日报生成类似
-        with open(markdown_file_path, 'r') as file:
+        with open(markdown_file_path, 'r',encoding="utf-8") as file:
             markdown_content = file.read()
 
         report = self.llm.generate_daily_report(markdown_content)
 
         report_file_path = os.path.splitext(markdown_file_path)[0] + f"_report.md"
-        with open(report_file_path, 'w+') as report_file:
+        with open(report_file_path, 'w+',encoding="utf-8") as report_file:
             report_file.write(report)
 
 

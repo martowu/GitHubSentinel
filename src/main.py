@@ -15,6 +15,10 @@ from subscription_manager import SubscriptionManager
 from command_handler import CommandHandler
 from logger import LOG
 
+from dotenv import load_dotenv,find_dotenv
+
+_ = load_dotenv(find_dotenv())
+
 def run_scheduler(scheduler):
     scheduler.start()
 

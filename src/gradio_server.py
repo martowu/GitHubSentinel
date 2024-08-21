@@ -7,6 +7,11 @@ from llm import LLM
 from subscription_manager import SubscriptionManager
 from logger import LOG
 
+
+from dotenv import load_dotenv,find_dotenv
+
+_ = load_dotenv(find_dotenv())
+
 config = Config()
 github_client = GitHubClient(config.github_token)
 llm = LLM()
